@@ -4,6 +4,36 @@
 
 These commands help you interact with the Linux filesystem, create/remove files and directories, and view file contents.
 
+---
+
+## Table of Contents
+
+* <a href="#01">01 Navigation & Directory Commands</a>
+* <a href="#02">02 File & Directory Management</a>
+* <a href="#03">03 Viewing and Writing to Files</a>
+* <a href="#04">04 Advanced Linux Commands (For DevOps & Power Users)</a>
+	* <a href="#04_01">04_01. cp</a>
+	* <a href="#04_02">04_02. mv</a>
+	* <a href="#04_03">04_03. wc</a>
+	* <a href="#04_04">04_04. Hard Link vs Soft Link (ln)</a>
+	* <a href="#04_04">04_05. cut</a>
+	* <a href="#04_06">04_06. tee</a>
+	* <a href="#04_07">04_07. sort</a>
+	* <a href="#04_08">04_08. diff</a>
+	* <a href="#04_09">04_09. vi</a>
+* <a href="#05">05 Login Related: SSH & Remote Access</a>
+* <a href="#06">06 Disk Usage Commands (Storage Monitoring)</a>
+	* <a href="#06_01">06_01. df</a>
+	* <a href="#06_02">06_02. du</a>
+	* <a href="#06_03">06_03. ls -a</a>
+* <a href="#07">07 Process Management Commands</a>
+
+
+
+---
+
+<section id=01>
+
 ### 🔹 Navigation & Directory Commands
 
 | Command                 | Description                                                  |
@@ -14,6 +44,10 @@ These commands help you interact with the Linux filesystem, create/remove files 
 | `cd /`                  | Takes you to the root directory (/)                          |
 | `ls`                    | Lists all files and folders in the current directory         |
 | `ls -l`                 | Lists with detailed information (permissions, size, date, time) |
+
+</section>
+
+<section id=02>
 
 ### 🔹 File & Directory Management
 
@@ -26,6 +60,10 @@ These commands help you interact with the Linux filesystem, create/remove files 
 | `rm -r <dir_name>`      | Deletes a directory and its contents recursively (`-r` = recursive) |
 
 ✅ **Use `rm -rf <dir>` with caution — it will force delete everything inside.**
+
+</section>
+
+<section id=03>
 
 ### 🔹 Viewing and Writing to Files
 
@@ -55,9 +93,15 @@ These commands help you interact with the Linux filesystem, create/remove files 
     ```
 * Press `Ctrl + C` to exit from commands like `tail -f` or when you're stuck in terminal.
 
+</section>
+
 ---
 
+<section id=04>
+
 ## 🔧 Advanced Linux Commands (For DevOps & Power Users)
+
+<section id=04_01>
 
 ### 🔹 1. `cp` – Copy Files or Directories
 
@@ -74,6 +118,10 @@ cp devops/new_file.txt cloud/       # Copy file from devops to cloud
 cp -r cloud/ devops/                # Copy entire "cloud" folder into "devops"
 ```
 
+</section>
+
+<section id=04_02>
+
 ### 🔹 2. `mv` – Move or Rename
 
 ```bash
@@ -87,6 +135,10 @@ mv <source> <destination>
 mv new_file.txt ../cloud/           # Move file to another folder
 mv devops/ linux_for_devops         # Rename the directory
 ```
+
+</section>
+
+<section id=04_03>
 
 ### 🔹 3. `wc` – Word Count
 
@@ -106,6 +158,10 @@ wc new_file.txt             # Output: 1  4  16
                             # (1 line, 4 words, 16 bytes)
 ```
 Can also be used with multiple files.
+
+</section>
+
+<section id=04_04>
 
 ### 🔹 4. Hard Link vs Soft Link
 
@@ -130,6 +186,10 @@ ln -s original.txt softlink.txt
 ls -ltr             # Shows file type and link relationships
 ```
 
+</section>
+
+<section id=04_05>
+
 ### 🔹 5. `cut` – Extract Bytes or Characters
 
 ```bash
@@ -137,6 +197,10 @@ cut -b 1 myfile.txt
 ```
 * Extracts the first byte of each line.
 * From this, it will output `t`.
+
+</section>
+
+<section id=04_06>
 
 ### 🔹 6. `tee` – Output + Save Simultaneously
 
@@ -147,6 +211,10 @@ echo "hello" | tee new2File.txt
 * Also saves it into `new2File.txt`.
 Useful when you want to log something while still seeing it live.
 
+</section>
+
+<section id=04_07>
+
 ### 🔹 7. `sort` – Sort Lines in a File
 
 ```bash
@@ -155,6 +223,11 @@ sort myfile.txt
 * Sorts lines alphabetically.
 * You can use flags like `-r` (reverse), `-n` (numeric sort).
 
+
+</section>
+
+<section id=04_08>
+
 ### 🔹 8. `diff` – Compare Two Files
 
 ```bash
@@ -162,6 +235,11 @@ diff file1.txt file2.txt
 ```
 * Shows the differences between two files.
 * Very useful for config comparison, troubleshooting, etc.
+
+
+</section>
+
+<section id=04_09>
 
 ### 🔹 9. `vi` – Vim/Vi Text Editor
 
@@ -177,7 +255,13 @@ vi <filename>
 
 Vi is essential when working on remote Linux servers without a GUI.
 
+
+</section>
+
+</section>
 ---
+
+<section id=05>
 
 ## 🔐 Login Related: SSH & Remote Access
 
@@ -247,11 +331,17 @@ Windows doesn’t support `.pem` files directly in PowerShell. So:
 | Permission issue fix  | `chmod 400 key.pem`         |
 | GUI for Windows       | PuTTY + PuTTYgen            |
 
+</section>
+
 ---
+
+<section id=06>
 
 ## 🗃️ Disk Usage Commands (Storage Monitoring)
 
 These commands help you monitor disk space — essential for system health, especially in production environments.
+
+<section id=06_01>
 
 ### 🔹 1. `df` – Disk Free
 
@@ -266,6 +356,10 @@ df -h
 * Adds human-readable format (e.g., GB, MB instead of blocks).
 Use this to check if your root `/` or `/home` partitions are running out of space.
 
+</section>
+
+<section id=06_02>
+
 ### 🔹 2. `du` – Disk Usage
 
 ```bash
@@ -278,6 +372,11 @@ du -sh <folder-name>
 ```
 * `-s`: Summary, `-h`: Human-readable.
 * Use to check how much space a particular folder is using.
+
+
+</section>
+
+<section id=06_03>
 
 ### 🔹 3. `ls -a` – List All Files (Including Hidden)
 
@@ -293,7 +392,13 @@ du -sh /var/log    # See log folder size
 ls -a              # Find hidden `.config`, `.env` files
 ```
 
+</section>
+</section>
+
+
 ---
+
+<section id=07>
 
 ## ⚙️ Process Management Commands
 

@@ -4,6 +4,28 @@ This document covers fundamental concepts related to how the internet works, ser
 
 ---
 
+## Table of Contents
+
+* <a href="#01">01 How Does the Internet Work?</a>
+* <a href="#02">02 What is a Server?</a>
+* <a href="#03">03 Difference between Web Server & Application Server.</a>
+* <a href="#04">04 Types of Application</a>
+	* <a href="#04_01">04_01 Standalone Applications</a>
+	* <a href="#04_02">04_02 Web Applications</a>
+* <a href="#05">05 Application Support</a>
+* <a href="#06">06 What is Linux?</a>
+* <a href="#07">07 How to install Linux?</a>
+* <a href="#08">08 What is the Difference between Linux & Windows?</a>
+* <a href="#09">09 Software & Tools to access a remote server or System</a>
+* <a href="#10">10 What is Kernel, Bootloader, and Shell</a>
+* <a href="#11">11 Linux System Architecture</a>
+* <a href="#12">12 What is Linux File System</a>
+* <a href="#13">13 What are the States of a Process in Linux?</a>
+
+---
+
+<section id=01>
+
 ## How Does the Internet Work?
 
 When we access online content like YouTube videos or browse websites, it might seem like data comes directly from a satellite. In reality, the internet's infrastructure is more complex and relies heavily on physical connections.
@@ -36,7 +58,11 @@ When you open YouTube:
 2.  That request travels thousands of kilometers through cables to reach a data center.
 3.  The data center sends the video data back to you through the same path, and you see it on your screen almost instantly.
 
+</section>
+
 ---
+
+<section id=02>
 
 ## What is a Server?
 
@@ -96,7 +122,11 @@ Let's illustrate how the internet and servers work together:
 | **ISP** | Connects you to the internet       |
 | **DNS** | Converts domain names to IPs       |
 
+</section>
+
 ---
+
+<section id=03>
 
 ## Difference Between Web Server and Application Server
 
@@ -151,13 +181,20 @@ Often in real-world web development:
 * **Web server** = for delivering static content quickly.
 * **Application server** = for processing requests and returning customized, dynamic content.
 
+
+</section>
+
 ---
+
+<section id=04>
 
 ## Types of Applications
 
 Applications can mainly be categorized into two types:
 1.  **Standalone Applications**
 2.  **Web Applications**
+
+<section id=04_01>
 
 ### 1. Standalone Applications
 
@@ -175,6 +212,10 @@ A **standalone application** is a software program that runs independently on a 
 * Stores data locally or temporarily.
 
 **DevOps View:** If you're managing a standalone application, you don’t need to deal with backend infrastructure like databases, APIs, or cloud platforms. Most of the operations are handled on the device itself.
+
+</section>
+
+<section id=04_02>
 
 ### 2. Web Applications
 
@@ -201,6 +242,8 @@ A **web application** runs with the help of the internet. It connects multiple s
 * Monitoring performance and availability.
 * Handling cloud infrastructure (AWS, GCP, Azure).
 
+</section>
+
 ### Summary Comparison:
 
 | Feature             | Standalone Application      | Web Application                        |
@@ -223,7 +266,11 @@ Understanding this difference helps you decide:
 * How to design your infrastructure.
 * How to deploy and maintain the application efficiently.
 
+</section>
+
 ---
+
+<section id=05>
 
 ## What is Application Support?
 
@@ -272,7 +319,11 @@ From a DevOps perspective, Application Support involves:
 * Without support, even well-developed applications can fail in production.
 * For DevOps engineers, mastering application support means mastering tools, logs, and monitoring strategies to keep systems healthy.
 
+</section>
+
 ---
+
+<section id=06>
 
 ## What is Linux?
 
@@ -323,7 +374,11 @@ So as a DevOps engineer, learning Linux is mandatory.
 | **Usage** | Servers, Cloud, IoT, DevOps     | Mostly enterprise environments   |
 | **Flexibility**| Highly customizable             | Less customizable                |
 
+</section>
+
 ---
+
+<section id=07>
 
 ## How to Install Linux?
 
@@ -373,7 +428,11 @@ If you want to install Linux alongside or in place of Windows, follow this appro
 
 ⚠️ **Backup your data before installing Linux on bare metal.** This method gives you full Linux performance but requires you to commit your machine.
 
+</section>
+
 ---
+
+<section id=08>
 
 ## What is the Difference Between Linux and Windows?
 
@@ -395,7 +454,11 @@ Here’s a breakdown:
 * **Linux is essential for DevOps roles** due to its flexibility, scripting power, and native support for most modern tools.
 * **Windows is rarely used in cloud or server-side deployments** unless working with .NET or legacy systems.
 
+</section>
+
 ---
+
+<section id=09>
 
 ## Software & Tools to Access a Remote Server or System
 
@@ -446,7 +509,11 @@ Suppose you are not physically near your laptop or server, but you still want to
 | **VNC** | Remote desktop access (GUI)     |
 | **tmux / screen**| Persistent SSH sessions         |
 
+</section>
+
 ---
+
+<section id=10>
 
 ## What is Kernel, Bootloader, and Shell?
 
@@ -509,7 +576,12 @@ Other bootloaders: LILO (Linux Loader), SYSLINUX. But GRUB is the most used and 
 | **Shell** | Interface between user and kernel; interprets commands|
 | **Bootloader**| Starts the OS by loading the kernel after the system is powered on|
 
+
+</section>
+
 ---
+
+<section id=11>
 
 ## Linux System Architecture
 
@@ -567,7 +639,11 @@ Applications / Utilities
 | **Shell** | Takes commands from user and sends to kernel|
 | **Applications**| Let users run tasks via shell or GUI      |
 
+</section>
+
 ---
+
+<section id=12>
 
 ## What is Linux File System?
 
@@ -598,7 +674,11 @@ The **Linux File System** is how files and directories (folders) are organized i
 
 📌 **Example:** If you use the command `cd /`, you'll be at the root directory. You can then `ls` to list the core folders shown above.
 
+</section>
+
 ---
+
+<section id=13>
 
 ## What are the States of a Process in Linux?
 
@@ -614,4 +694,4 @@ A **process** is any program that's currently being executed. Every process in L
 | **T** | Stopped              | The process is stopped (paused)                |
 | **Z** | Zombie               | Process completed but not cleaned up by its parent|
 | **X** | Dead                 | Terminated process (rarely visible)            |
-```
+
