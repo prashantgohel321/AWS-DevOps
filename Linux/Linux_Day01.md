@@ -58,6 +58,8 @@ When you open YouTube:
 2.  That request travels thousands of kilometers through cables to reach a data center.
 3.  The data center sends the video data back to you through the same path, and you see it on your screen almost instantly.
 
+<img src="./SS_01/How_Internet_Works.png" width=700px height=600px>
+
 </section>
 
 ---
@@ -122,6 +124,8 @@ Let's illustrate how the internet and servers work together:
 | **ISP** | Connects you to the internet       |
 | **DNS** | Converts domain names to IPs       |
 
+<img src="./SS_01/What_is_Server.png" height=600px>
+
 </section>
 
 ---
@@ -181,6 +185,7 @@ Often in real-world web development:
 * **Web server** = for delivering static content quickly.
 * **Application server** = for processing requests and returning customized, dynamic content.
 
+<img src="./SS_01/Diff_Web_App_Server.png" height=600px>
 
 </section>
 
@@ -265,6 +270,8 @@ Understanding this difference helps you decide:
 * Which tools to use.
 * How to design your infrastructure.
 * How to deploy and maintain the application efficiently.
+
+<img src="./SS_01/Types_Of_App.png" height=600px>
 
 </section>
 
@@ -508,6 +515,8 @@ Suppose you are not physically near your laptop or server, but you still want to
 | **PuTTY** | Lightweight SSH client (Windows)|
 | **VNC** | Remote desktop access (GUI)     |
 | **tmux / screen**| Persistent SSH sessions         |
+
+<img src="./SS_01/Tools_to_Access_remote_server.png" height=600px>
 
 </section>
 
