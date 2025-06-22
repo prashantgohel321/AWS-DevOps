@@ -4,9 +4,62 @@ This document covers essential Linux commands for system administration, user an
 
 ---
 
-## Day 03: Users and File Management
+# Day 03: Users and File Management
+
+## List of Contents
+
+* <a href="#01">01 System-Level Commands in Linux</a>
+    * <a href="#01_01">01.01 `uname` – System Information</a>
+    * <a href="#01_02">01.02 `uptime` – System Running Time</a>
+    * <a href="#01_03">01.03 `date` – Current Date & Time</a>
+    * <a href="#01_04">01.04 `who` vs `whoami`</a>
+    * <a href="#01_05">01.05 `which` – Locate Executables</a>
+    * <a href="#01_06">01.06 `id` – User and Group IDs</a>
+    * <a href="#01_07">01.07 `sudo` – Super User Privileges</a>
+    * <a href="#01_08">01.08 `shutdown` & `reboot` – Power Management</a>
+    * <a href="#01_09">01.09 `apt` – Package Management on Debian/Ubuntu</a>
+    * <a href="#01_10">01.10 Command History Search (Bonus Tip)</a>
+    * <a href="#01_11">01.11 Other Popular Linux Package Managers</a>
+    * <a href="#01_12">01.12 Summary Table: System-Level Commands</a>
+* <a href="#02">02 Linux User and Group Management</a>
+    * <a href="#02_01">02.01 Why User & Group Management?</a>
+    * <a href="#02_02">02.02 How to Create a User</a>
+    * <a href="#02_03">02.03 Set a Password for the User</a>
+    * <a href="#02_04">02.04 Switch Between Users</a>
+    * <a href="#02_05">02.05 View User Information</a>
+    * <a href="#02_06">02.06 Delete a User</a>
+    * <a href="#02_07">02.07 Add New Users (Example)</a>
+    * <a href="#02_08">02.08 Create Groups</a>
+    * <a href="#02_09">02.09 View Users and Groups</a>
+    * <a href="#02_10">02.10 Add Users to Groups</a>
+    * <a href="#02_11">02.11 Delete a Group</a>
+    * <a href="#02_12">02.12 Summary Table: User and Group Management</a>
+* <a href="#03">03 File Permission Commands in Linux</a>
+    * <a href="#03_01">03.01 Why are File Permissions Important?</a>
+    * <a href="#03_02">03.02 Viewing File Permissions</a>
+    * <a href="#03_03">03.03 Permission Values Table</a>
+    * <a href="#03_04">03.04 Changing File/Directory Permissions</a>
+    * <a href="#03_05">03.05 File Ownership Commands</a>
+    * <a href="#03_06">03.06 `umask` – Default Permission Setting</a>
+* <a href="#04">04 Compression Commands in Linux</a>
+    * <a href="#04_01">04.01 Install Zip Utility</a>
+    * <a href="#04_02">04.02 Create a ZIP File</a>
+    * <a href="#04_03">04.03 Extract a ZIP File</a>
+    * <a href="#04_04">04.04 Gzip and Gunzip</a>
+    * <a href="#04_05">04.05 Tar with Compression (Most Common for Linux)</a>
+        * <a href="#04_05_01">04.05.01 Compress a Directory</a>
+        * <a href="#04_05_02">04.05.02 Extract the Tar File</a>
+* <a href="#05">05 File Transfer Commands (Local to Remote – EC2)</a>
+    * <a href="#05_01">05.01 `scp` – Secure Copy</a>
+    * <a href="#05_02">05.02 `rsync` – Remote Sync</a>
+
+---
+
+<section id="01">
 
 ### 🖥️ System-Level Commands in Linux (for DevOps & Admin Work)
+
+<section id="01_01">
 
 #### 1. `uname` – System Information
 
@@ -15,14 +68,26 @@ This document covers essential Linux commands for system administration, user an
     * `Linux` (on Ubuntu, RedHat, etc.)
     * `Darwin` (on macOS)
 
+</section>
+
+<section id="01_02">
+
 #### 2. `uptime` – System Running Time
 
 * Shows how long the system has been running, how many users are connected, and the system load average.
 * Example: `10:41:09 up 9 min, 1 user, load average: 0.06, 0.07, 0.01`
 
+</section>
+
+<section id="01_03">
+
 #### 3. `date` – Current Date & Time
 
 * Outputs the current date and time of your system (UTC by default).
+
+</section>
+
+<section id="01_04">
 
 #### 4. `who` vs `whoami`
 
@@ -38,6 +103,10 @@ This document covers essential Linux commands for system administration, user an
 
 > **Ans:** `who` shows a list of users (current and past logins with activity details), while `whoami` shows only the current active user.
 
+</section>
+
+<section id="01_05">
+
 #### 5. `which` – Locate Executables
 
 ```bash
@@ -49,10 +118,18 @@ which java
 * Shows the full path of an executable being used by the system.
 * Helps debug issues when wrong versions or paths are involved.
 
+</section>
+
+<section id="01_06">
+
 #### 6. `id` – User and Group IDs
 
 * Displays **UID** (User ID) and **GID** (Group ID) of the **current user**.
 * Useful when **managing permissions** and multiple users/groups on a system.
+
+</section>
+
+<section id="01_07">
 
 #### 7. `sudo` – Super User Privileges
 
@@ -70,11 +147,14 @@ which java
 sudo rm file.txt          # Deletes a file as root
 sudo shutdown             # Shuts down the system
 sudo apt-get install xyz  # Installs software with root rights
-````
 ```bash
 id                       # Check current user groups
 cat /etc/passwd          # List all user accounts
 ```
+
+</section>
+
+<section id="01_08">
 
 #### 8. `shutdown` & `reboot` – Power Management
 
@@ -85,6 +165,10 @@ sudo reboot
 
 * Requires root permission (`sudo`).
 * Used in cloud environments (e.g., EC2 instances) and local Linux systems.
+
+</section>
+
+<section id="01_09">
 
 #### 9. `apt` – Package Management on Debian/Ubuntu
 
@@ -104,9 +188,17 @@ sudo apt remove docker.io # To remove Docker
 which docker              # Find Docker path
 ```
 
+</section>
+
+<section id="01_10">
+
 #### 10. Command History Search (Bonus Tip)
 
 * `Ctrl + R`: Press `Ctrl + R` and type a keyword to search previously used commands from your history.
+
+</section>
+
+<section id="01_11">
 
 #### 11. Other Popular Linux Package Managers
 
@@ -118,34 +210,48 @@ which docker              # Find Docker path
 | `portage` | ChromeOS               |
 | `rpm`     | Red Hat Enterprise     |
 
+</section>
+
+<section id="01_12">
+
 ### 📌 Summary Table: System-Level Commands
 
-| Command            | Purpose                               |
-| :----------------- | :------------------------------------ |
-| `uname`            | Shows system OS name                  |
-| `uptime`           | How long the system is running        |
-| `date`             | Shows current date & time             |
-| `who` / `whoami`   | List all vs current user              |
-| `which`            | Locate path of executables            |
-| `id`               | Show user and group IDs               |
-| `sudo`             | Execute commands as root              |
-| `shutdown`         | Shut Down System                      |
-| `reboot`           | Restart System                        |
-| `apt`              | Install/Remove packages               |
-| `Ctrl + R`         | Search previous commands              |
+| Command             | Purpose                               |
+| :------------------ | :------------------------------------ |
+| `uname`             | Shows system OS name                  |
+| `uptime`            | How long the system is running        |
+| `date`              | Shows current date & time             |
+| `who` / `whoami`    | List all vs current user              |
+| `which`             | Locate path of executables            |
+| `id`                | Show user and group IDs               |
+| `sudo`              | Execute commands as root              |
+| `shutdown`          | Shut Down System                      |
+| `reboot`            | Restart System                        |
+| `apt`               | Install/Remove packages               |
+| `Ctrl + R`          | Search previous commands              |
 | `yum`, `dnf`, etc. | Other Linux distros' package managers |
 
+</section>
+</section>
 ---
+
+<section id="02">
 
 ## 🧑‍💻 Linux User and Group Management (for DevOps)
 
 One of the key reasons for Linux’s widespread use in enterprise and server environments is its robust user and group management system. It allows administrators to manage access, organize teams, and control system permissions securely and efficiently.
+
+<section id="02_01">
 
 ### ✅ 1. Why User & Group Management?
 
 * In companies, there are multiple users: DevOps engineers, testers, developers, admins, etc.
 * Linux helps organize users into logical groups for access control.
 * This is crucial for security, collaboration, and permission management.
+
+</section>
+
+<section id="02_02">
 
 ### ✅ 2. How to Create a User
 
@@ -157,6 +263,10 @@ sudo useradd -m jethalal
 * `sudo`: Required because user creation needs superuser privileges.
 * **Note:** You can check the current user using: `whoami`
 
+</section>
+
+<section id="02_03">
+
 ### ✅ 3. Set a Password for the User
 
 ```bash
@@ -164,6 +274,10 @@ sudo passwd jethalal
 ```
 
 * Prompts you to set a login password for the new user.
+
+</section>
+
+<section id="02_04">
 
 ### ✅ 4. Switch Between Users
 
@@ -176,6 +290,10 @@ su jethalal
 ```bash
 exit
 ```
+
+</section>
+
+<section id="02_05">
 
 ### ✅ 5. View User Information
 
@@ -191,6 +309,10 @@ id
 
 * Displays the user ID (UID) and group ID (GID) of the currently logged-in user.
 
+</section>
+
+<section id="02_06">
+
 ### ✅ 6. Delete a User
 
 ```bash
@@ -199,6 +321,10 @@ sudo userdel -r jethalal # -r removes the user's home directory and mail spool
 ```
 
 ---
+
+</section>
+
+<section id="02_07">
 
 ## 👥 Group Management
 
@@ -214,6 +340,10 @@ sudo useradd tester2
 sudo useradd tester3
 ```
 
+</section>
+
+<section id="02_08">
+
 ### ✅ 8. Create Groups
 
 ```bash
@@ -221,12 +351,20 @@ sudo groupadd devops
 sudo groupadd testers
 ```
 
+</section>
+
+<section id="02_09">
+
 ### ✅ 9. View Users and Groups
 
 ```bash
 cat /etc/passwd   # List all users
 cat /etc/group    # List all groups
 ```
+
+</section>
+
+<section id="02_10">
 
 ### ✅ 10. Add Users to Groups
 
@@ -239,26 +377,36 @@ sudo gpasswd -M tester1,tester2,tester3 testers
 
 * `-M`: Specify multiple members to add to a group in one go.
 
+</section>
+
+<section id="02_11">
+
 ### ✅ 11. Delete a Group
 
 ```bash
 sudo groupdel testers
 ```
+</section>
+
+<section id="02_12">
 
 ### 📌 Summary Table: User and Group Management
 
-| Command                 | Purpose                                     |
-| :---------------------- | :------------------------------------------ |
-| `useradd -m username`   | Add a new user with a home directory        |
-| `passwd username`       | Set password for the user                   |
-| `su username` / `exit`  | Switch to another user / go back            |
-| `cat /etc/passwd`       | List all users                              |
-| `cat /etc/group`        | List all groups                             |
-| `userdel username`      | Delete a user                               |
-| `groupadd groupname`    | Create a new group                          |
-| `gpasswd -a user group` | Add a user to a group                       |
-| `gpasswd -M u1,u2 group`| Add multiple users to a group               |
-| `groupdel groupname`    | Delete a group                              |
+| Command                   | Purpose                                     |
+| :------------------------ | :------------------------------------------ |
+| `useradd -m username`     | Add a new user with a home directory        |
+| `passwd username`         | Set password for the user                   |
+| `su username` / `exit`    | Switch to another user / go back            |
+| `cat /etc/passwd`         | List all users                              |
+| `cat /etc/group`          | List all groups                             |
+| `userdel username`        | Delete a user                               |
+| `groupadd groupname`      | Create a new group                          |
+| `gpasswd -a user group`   | Add a user to a group                       |
+| `gpasswd -M u1,u2 group`  | Add multiple users to a group               |
+| `groupdel groupname`      | Delete a group                              |
+
+</section>
+</section>
 
 **🧠 Interview Tip: Q:** What is the purpose of user groups in Linux?
 
@@ -266,7 +414,11 @@ sudo groupdel testers
 
 ---
 
+<section id="03">
+
 ## 🔐 File Permission Commands in Linux
+
+<section id="03_01">
 
 ### 📌 Why are File Permissions Important?
 
@@ -278,6 +430,9 @@ To control permissions, Linux uses users and groups:
 * **Group:** A set of users who can have shared permissions.
 * **Others:** Everyone else.
 
+</section>
+
+<section id="03_02">
 ### 🔍 Viewing File Permissions
 
 To check the permissions of files and folders:
@@ -308,6 +463,10 @@ drwxrwxr-x  2 ubuntu ubuntu 4096 Jun 21  linux_for_devops
     * `x` = execute
     * `-` = no permission
 
+</section>
+
+<section id="03_03">
+
 ### 🧮 Permission Values Table
 
 | Permission | Binary | Octal |
@@ -321,6 +480,10 @@ drwxrwxr-x  2 ubuntu ubuntu 4096 Jun 21  linux_for_devops
 | `rw-`      | `110`  | `6`   |
 | `rwx`      | `111`  | `7`   |
 
+</section>
+
+<section id="03_04">
+
 ### 🔧 Changing File/Directory Permissions
 
 `chmod` – Change File Mode (permissions)
@@ -332,9 +495,13 @@ chmod
 Examples:
 
 ```bash
-chmod 777 cloud           # Gives rwxrwxrwx to the directory
+chmod 777 cloud            # Gives rwxrwxrwx to the directory
 chmod 664 devops-file.txt # Gives rw-rw-r-- to the file
 ```
+
+</section>
+
+<section id="03_05">
 
 ### 👤 File Ownership Commands
 
@@ -344,11 +511,9 @@ chmod 664 devops-file.txt # Gives rw-rw-r-- to the file
 sudo chown jethalal devops-file.txt
 ```
 
-`chgrp` – Change Group Ownership
+</section>
 
-```bash
-sudo chgrp devops devops-file.txt
-```
+<section id="03_06">
 
 ### 🧰 umask – Default Permission Setting
 
@@ -358,17 +523,28 @@ sudo chgrp devops devops-file.txt
     * New directories get `775` (`rwxrwxr-x`) permissions.
 * You can check the current umask with: `umask`
 
+</section>
+</section>
+
 ---
+
+<section id="04">
 
 ## 📦 Compression Commands in Linux
 
 Compression helps reduce the size of files or directories, making them easier to store and transfer.
+
+<section id="04_01">
 
 ### 🔹 Install Zip Utility
 
 ```bash
 sudo apt install zip
 ```
+
+</section>
+
+<section id="04_02">
 
 ### 🔹 Create a ZIP File
 
@@ -378,11 +554,19 @@ zip ldf.zip linux_for_devops
 
 * Compresses the folder `linux_for_devops` into a ZIP file named `ldf.zip`.
 
+</section>
+
+<section id="04_03">
+
 ### 🔹 Extract a ZIP File
 
 ```bash
 unzip ldf.zip
 ```
+
+</section>
+
+<section id="04_04">
 
 ### 🔹 Gzip and Gunzip
 
@@ -392,6 +576,10 @@ Used for compressing individual files.
 gzip filename.txt    # Compresses to filename.txt.gz
 gunzip filename.txt.gz # Decompresses to filename.txt
 ```
+
+</section>
+
+<section id="04_05">
 
 ### 🔹 Tar with Compression (Most Common for Linux)
 
@@ -417,11 +605,18 @@ tar -xvzf cloud.tar.gz
 * `z` – unzip
 * `f` – specify the file name
 
+</section>
+</section>
+
 ---
+
+<section id="05">
 
 ## 🔁 File Transfer Commands (Local to Remote – EC2)
 
 When working with servers (like AWS EC2), you often need to transfer files from your local machine to the remote server.
+
+<section id="05_01">
 
 ### 🔹 scp – Secure Copy
 
@@ -436,6 +631,10 @@ Example:
 ```bash
 scp -i ~/keys/linux-key.pem hello.txt ubuntu@ec2-13-233-22-50.ap-south-1.compute.amazonaws.com:/home/ubuntu/
 ```
+
+</section>
+
+<section id="05_02">
 
 ### 🔹 rsync – Remote Sync
 
@@ -454,3 +653,6 @@ Example:
 ```bash
 rsync -e "ssh -i ~/keys/linux-key.pem" -avz ./project/ ubuntu@ec2-13-233-22-50.ap-south-1.compute.amazonaws.com:/home/ubuntu/
 ```
+
+</section>
+</section>

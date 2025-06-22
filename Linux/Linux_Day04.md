@@ -1,17 +1,46 @@
-Linux Day 04 Networking Commands
-=================================
+# Linux Day 04 Networking Commands
 
 ### 🤔 What does a DevOps Engineer actually do daily?
 
- - One of the most common tasks a DevOps engineer does is deploy applications on various servers or cloud systems.
- - But what happens when an app doesn't run or respond after deployment?
+- One of the most common tasks a DevOps engineer does is deploy applications on various servers or cloud systems.
+- But what happens when an app doesn't run or respond after deployment?
 
 That’s where basic **network troubleshooting** begins. And the first command in your toolbox is…
+
+## List of Contents
+
+* <a href="#day04_ping">01 `ping` – Check If Something is Alive on the Network</a>
+* <a href="#day04_netstat">02 `netstat` – See What’s Happening in Your Network</a>
+* <a href="#day04_ifconfig">03 `ifconfig` – Know Your Network Interfaces</a>
+* <a href="#day04_traceroute_tracepath">04 `traceroute` vs `tracepath`: Follow the Journey of Your Network Request</a>
+* <a href="#day04_mtr">05 `mtr` – My Traceroute (Ping + Traceroute Combined)</a>
+* <a href="#day04_nslookup">06 `nslookup` – Find the IP Behind a Domain</a>
+* <a href="#day04_telnet">07 `telnet` – Test Port Connectivity to a Server</a>
+* <a href="#day04_hostname">08 `hostname` – Get or Set Your System's Name</a>
+* <a href="#day04_ip_address_show">09 `ip address show` – Modern Alternative to ifconfig</a>
+* <a href="#day04_iwconfig">10 `iwconfig` – Wireless Network Info</a>
+* <a href="#day04_ss">11 `ss` – A Modern Replacement for netstat</a>
+* <a href="#day04_dig">12 `dig` – Deep DNS Lookup</a>
+* <a href="#day04_whois">13 `whois` – Domain Ownership & Registry Info</a>
+* <a href="#day04_netcat">14 `nc` (Netcat) – The Network Swiss Army Knife</a>
+* <a href="#day04_arp">15 `arp` – View ARP Table (Address Resolution Protocol)</a>
+* <a href="#day04_ifplugstatus">16 `ifplugstatus` – Is Your Ethernet Plugged In?</a>
+* <a href="#day04_curl">17 `curl` – Talk to APIs Like a DevOps Pro</a>
+* <a href="#day04_wget">18 `wget`</a>
+* <a href="#day04_iptables">19 `iptables` – Control Your Network Traffic</a>
+* <a href="#day04_watch">20 `watch` – Repeatedly Run a Command (Live Monitoring)</a>
+* <a href="#day04_nmap">21 `nmap` – Scan Networks Like a Pro</a>
+* <a href="#day04_route">22 `route` – View or Edit Routing Table</a>
+* <a href="#day04_summary_table">23 Final Recap Table</a>
+
+---
+
+<section id="day04_ping">
 
 🔍 **`ping`** – Check If Something is Alive on the Network
 
 Imagine this:
- - You deploy your app, but it's not opening in the browser. First question in your mind is:
+- You deploy your app, but it's not opening in the browser. First question in your mind is:
 
 > “Is the server even reachable?”
 
@@ -21,15 +50,15 @@ To answer this, we use the ping command.
 ping checks whether a particular system (like a server or website) is reachable over the network.
 
 It works like this:
- - It sends small packets of data to the destination (IP address or domain).
- - If the destination receives it, it sends back a reply.
- - You get a result showing whether the system is reachable and how long it took for the round-trip.
+- It sends small packets of data to the destination (IP address or domain).
+- If the destination receives it, it sends back a reply.
+- You get a result showing whether the system is reachable and how long it took for the round-trip.
 
 So, if the ping is successful, it means:
 
- - ✅ Your internet is working
- - ✅ The target server is online
- - ✅ Basic network communication is happening
+- ✅ Your internet is working
+- ✅ The target server is online
+- ✅ Basic network communication is happening
 
 If not, you know there’s a problem — either with your system, the server, or the internet connection.
 
@@ -47,19 +76,22 @@ If everything’s good, you’ll see something like:
 ```
 
 That confirms:
- - ✔️ The domain is reachable
- - ✔️ The server is alive
- - ✔️ There’s no network block
+- ✔️ The domain is reachable
+- ✔️ The server is alive
+- ✔️ There’s no network block
 
 🛠️ When Should DevOps Use ping?
- - App is not loading or giving connection errors
- - To confirm server is up before SSH login
- - To check internet connectivity
- - To test if a DNS name resolves correctly
- - First step in debugging downtime issues
+- App is not loading or giving connection errors
+- To confirm server is up before SSH login
+- To check internet connectivity
+- To test if a DNS name resolves correctly
+- First step in debugging downtime issues
 
+</section>
 
-### 🌐 netstat – See What’s Happening in Your Network
+<section id="day04_netstat">
+
+### 🌐 `netstat` – See What’s Happening in Your Network
 
 #### 🧰 First Things First: Install the Toolkit
 The netstat command doesn’t come pre-installed in newer Linux distributions. It belongs to an older but very useful package called net-tools.
@@ -75,16 +107,16 @@ netstat
 ```
 
 ### 📊 What is netstat?
- - netstat stands for Network Statistics.
+- netstat stands for Network Statistics.
 
- - It gives you a snapshot of all network connections your system is handling — like who your machine is talking to, which ports are open, and which protocols are being used.
+- It gives you a snapshot of all network connections your system is handling — like who your machine is talking to, which ports are open, and which protocols are being used.
 
 ### 🧠 Why DevOps Engineers Use netstat
 As a DevOps engineer, this command is super helpful when:
- - You want to debug connection issues on your server
- - You need to see if a specific port is open or in use
- - You’re checking for suspicious or unexpected network activity
- - You’re managing multiple services on a single machine (like on AWS EC2).
+- You want to debug connection issues on your server
+- You need to see if a specific port is open or in use
+- You’re checking for suspicious or unexpected network activity
+- You’re managing multiple services on a single machine (like on AWS EC2).
 
 
 | Column        | Meaning                                   |
@@ -103,19 +135,19 @@ If you’re running an EC2 instance with multiple services (like web server, dat
 netstat -tuln
 ```
 
- - This shows all TCP (-t) and UDP (-u) ports in a numeric (-n) format that are listening (-l).
+- This shows all TCP (-t) and UDP (-u) ports in a numeric (-n) format that are listening (-l).
 
 Example output:
 
 ```bash
-tcp        0      0 0.0.0.0:22         0.0.0.0:*        LISTEN
-tcp        0      0 0.0.0.0:80         0.0.0.0:*        LISTEN
+tcp         0      0 0.0.0.0:22          0.0.0.0:* LISTEN
+tcp         0      0 0.0.0.0:80          0.0.0.0:* LISTEN
 ```
 
 This tells you:
- - Port 22 (SSH) is open
- - Port 80 (HTTP) is open
- - These are waiting for incoming connections
+- Port 22 (SSH) is open
+- Port 80 (HTTP) is open
+- These are waiting for incoming connections
 
 ### 🧵 What’s a Socket?
 > Think of a socket as a doorway between your app and the network.
@@ -135,12 +167,16 @@ If you're using an EC2 instance, every running service (like Apache, Nginx, MySQ
 - Troubleshoot app not responding issues
 - Check if a server is establishing outbound/inbound connections
 
+</section>
+
 ---
 
-### 🌐 ifconfig – Know Your Network Interfaces
+<section id="day04_ifconfig">
+
+### 🌐 `ifconfig` – Know Your Network Interfaces
 
 #### 🧠 What is ifconfig?
-- ifconfig stands for interface configuration. 
+- ifconfig stands for interface configuration.
 - It’s used to view or configure network interfaces on a Linux system — kind of like looking under the hood to see how your system connects to the outside world.
 
 to use it:
@@ -212,9 +248,13 @@ ip a
 
 This is the modern replacement for ifconfig and shows the same information in a slightly more detailed format.
 
+</section>
+
 ---
 
-### 🛰️ traceroute vs tracepath: Follow the Journey of Your Network Request
+<section id="day04_traceroute_tracepath">
+
+### 🛰️ `traceroute` vs `tracepath`: Follow the Journey of Your Network Request
 
 #### 🎥 How Do You Actually Watch a YouTube Video?
 Let’s say you open YouTube in your browser. What happens behind the scenes?
@@ -252,9 +292,9 @@ traceroute youtube.com
 
 🔍 You'll see something like:
 ```bash
-1  192.168.1.1   1.2 ms
-2  100.72.0.1    5.4 ms
-3  172.217.194.138  25.6 ms
+1   192.168.1.1   1.2 ms
+2   100.72.0.1    5.4 ms
+3   172.217.194.138   25.6 ms
 ```
 
 Each line = one hop. It tells you how many stops your request makes before reaching the destination.
@@ -292,9 +332,13 @@ As a DevOps Engineer, you might use traceroute or tracepath to:
 | traceroute | Shows full route to destination | Yes         | More detailed, needs install           |
 | tracepath | Same, but no root needed       | No          | Often pre-installed, simpler           |
 
+</section>
+
 ---
 
-### mtr – My Traceroute (Ping + Traceroute Combined)
+<section id="day04_mtr">
+
+### `mtr` – My Traceroute (Ping + Traceroute Combined)
 
 #### 💡 What is mtr?
 mtr is a powerful network diagnostic tool that combines the features of both ping and traceroute. It gives you a live, real-time view of the path your packets take to a destination.
@@ -317,7 +361,11 @@ Use mtr when:
 - You want a real-time report of network stability
 - You're debugging intermittent or flaky network issues
 
-### nslookup – Find the IP Behind a Domain
+</section>
+
+<section id="day04_nslookup">
+
+### `nslookup` – Find the IP Behind a Domain
 
 #### 🔎 What is nslookup?
 nslookup (Name Server Lookup) is used to:
@@ -340,9 +388,13 @@ You’ll see:
 - To troubleshoot DNS-related issues
 - To confirm a service is pointing to the correct IP
 
+</section>
+
 ----
 
-### telnet – Test Port Connectivity to a Server
+<section id="day04_telnet">
+
+### `telnet` – Test Port Connectivity to a Server
 #### 🧠 What is telnet?
 telnet is used to test connectivity to a specific port on a remote system.
 
@@ -355,7 +407,7 @@ Think of it as:
 
 #### 🔧 Usage:
 ```bash
-telnet youtube.com 80     # HTTP (public)
+telnet youtube.com 80    # HTTP (public)
 telnet youtube.com 443    # HTTPS (secure)
 ```
 
@@ -366,15 +418,19 @@ If the port is open and reachable, you’ll connect. If not, it’ll fail — le
 - Debug network/firewall rules in cloud environments
 - Validate microservices communication in private networks
 
+</section>
+
 ---
 
-#### hostname – Get or Set Your System's Name
+<section id="day04_hostname">
+
+#### `hostname` – Get or Set Your System's Name
 #### 🖥️ What is hostname?
 The hostname command shows the name of your system in the network. This is what other systems might see when they interact with yours.
 
 #### Usage:
 ```bash
-hostname           # See your system name
+hostname          # See your system name
 sudo hostname Prashant  # Temporarily change your hostname
 ```
 
@@ -386,14 +442,18 @@ Note: This change lasts until reboot. For permanent change, you modify system co
 - Helps in system logs, SSH access, and monitoring
 
 #### Recap Commands
-| Command      | Purpose                               | Example Use               |
-| :----------- | :------------------------------------ | :------------------------ |
-| mtr          | Live ping + traceroute                | `mtr google.com`          |
-| nslookup     | Check domain-to-IP resolution         | `nslookup example.com`    |
-| telnet       | Test connectivity to a specific port  | `telnet server.com 443`   |
-| hostname     | View or change system name            | `sudo hostname DevOpsMachine` |
+| Command    | Purpose                               | Example Use               |
+| :--------- | :------------------------------------ | :------------------------ |
+| mtr        | Live ping + traceroute                | `mtr google.com`          |
+| nslookup   | Check domain-to-IP resolution         | `nslookup example.com`    |
+| telnet     | Test connectivity to a specific port  | `telnet server.com 443`   |
+| hostname   | View or change system name            | `sudo hostname DevOpsMachine` |
+
+</section>
 
 ---
+
+<section id="day04_ip_address_show">
 
 ### `ip address show` – Modern Alternative to ifconfig
 
@@ -416,9 +476,13 @@ ip a
 - Replaces ifconfig, which is considered outdated.
 >Use this to check your server’s IP address, network adapter status, or troubleshoot connectivity.
 
+</section>
+
 ---
 
-### iwconfig – Wireless Network Info
+<section id="day04_iwconfig">
+
+### `iwconfig` – Wireless Network Info
 ```bash
 sudo apt install wireless-tools
 iwconfig
@@ -432,9 +496,13 @@ iwconfig
 
 🧠 Useful when working on laptops, IoT devices, Raspberry Pi, or any Linux box with Wi-Fi.
 
+</section>
+
 ---
 
-### ss – A Modern Replacement for netstat
+<section id="day04_ss">
+
+### `ss` – A Modern Replacement for netstat
 ```bash
 ss -tuln
 ```
@@ -449,9 +517,13 @@ It’s faster and more accurate than netstat and shows:
 #### 🧠 DevOps Use Case:
 Use ss to debug which service is running on which port — especially when netstat isn’t available.
 
+</section>
+
 ---
 
-### dig – Deep DNS Lookup
+<section id="day04_dig">
+
+### `dig` – Deep DNS Lookup
 ```bash
 dig youtube.com
 ```
@@ -470,9 +542,13 @@ It gives detailed DNS info, including:
 - Compare response from different DNS servers
 - Check propagation of DNS changes
 
+</section>
+
 ---
 
-### whois – Domain Ownership & Registry Info
+<section id="day04_whois">
+
+### `whois` – Domain Ownership & Registry Info
 ```bash
 sudo apt install whois
 whois youtube.com
@@ -485,7 +561,11 @@ whois youtube.com
 - Checking if a domain is about to expire
 - Security audits or asset discovery
 
+</section>
+
 ---
+
+<section id="day04_netcat">
 
 ### `nc` (Netcat) – The Network Swiss Army Knife
 
@@ -509,7 +589,11 @@ nc -zv google.com 443
 - Simulate simple client-server behavior
 - File transfer over internal network
 
-### arp – View ARP Table (Address Resolution Protocol)
+</section>
+
+<section id="day04_arp">
+
+### `arp` – View ARP Table (Address Resolution Protocol)
 ```bash
 arp -a
 ```
@@ -521,7 +605,11 @@ arp -a
 - Detecting devices connected to the same subnet
 - Investigating spoofing or IP conflicts
 
+</section>
+
 ---
+
+<section id="day04_ifplugstatus">
 
 ### `ifplugstatus` – Is Your Ethernet Plugged In?
 ```bash
@@ -536,26 +624,13 @@ ifplugstatus
 - Quickly checking cable disconnection issues
 - Network health checks
 
----
-
-### Summary Table
-| Command       | Purpose                                   | Notes                                  |
-| :------------ | :---------------------------------------- | :------------------------------------- |
-| `ip a`        | Show IP and interface status              | Modern `ifconfig`                      |
-| `iwconfig`    | Show Wi-Fi interfaces                     | Requires wireless-tools                |
-| `ss`          | Show open ports, connections              | Faster than `netstat`                  |
-| `dig`         | Deep DNS lookup                           | For checking DNS records               |
-| `whois`       | Domain ownership & registry info          | Good for audits & investigations       |
-| `nc`          | Network utility for port check, transfer, TCP tests | Swiss army knife for networking        |
-| `arp`         | IP-MAC mapping table                      | Useful in local networks               |
-| `ifplugstatus` | Check if ethernet cable is plugged in     | Great for quick hardware checks        |
-
-
-| command | description | 
+</section>
 
 ---
 
-### curl – Talk to APIs Like a DevOps Pro
+<section id="day04_curl">
+
+### `curl` – Talk to APIs Like a DevOps Pro
 #### 💬 What is an API?
 Imagine you're in a restaurant. You don’t walk into the kitchen to get your food — you tell the waiter, and the waiter brings your food.
 
@@ -567,7 +642,7 @@ The waiter is like an API.
 curl lets you talk to servers using APIs — to get data, send data, or trigger actions.
 
 ```bash
-curl -X GET https://api.example.com/users
+curl -X GET [https://api.example.com/users](https://api.example.com/users)
 ```
 
 🧪 Want clean, readable output?
@@ -576,7 +651,7 @@ Install and use jq (JSON prettifier):
 
 ```bash
 sudo apt install jq
-curl -X GET https://api.example.com/users | jq
+curl -X GET [https://api.example.com/users](https://api.example.com/users) | jq
 ```
 
 🧠 DevOps Use Cases:
@@ -584,11 +659,15 @@ curl -X GET https://api.example.com/users | jq
 - Fetch configuration/data from services
 - Automate deployment & monitoring tools
 
+</section>
+
 ---
+
+<section id="day04_wget">
 
 ### 🧲 What is wget?
 ```bash
-wget https://example.com/file.zip
+wget [https://example.com/file.zip](https://example.com/file.zip)
 ```
 
 📥 wget is used to download files from the internet via a direct link (HTTP/HTTPS/FTP).
@@ -597,16 +676,20 @@ wget https://example.com/file.zip
 - Download source code, scripts, or configs from URLs
 - Fetch release files during CI/CD pipeline runs
 
+</section>
+
 ---
 
-### iptables – Control Your Network Traffic
+<section id="day04_iptables">
+
+### `iptables` – Control Your Network Traffic
 iptables is a powerful tool to manage firewall rules in Linux. It’s like a security gate that controls:
 - Which connections are allowed
 - Which ports/services are open
 - Which traffic to block
 
 ```bash
-sudo iptables -h              # Help
+sudo iptables -h          # Help
 sudo iptables --list-rules    # View current rules
 ```
 
@@ -618,12 +701,16 @@ A routing table is a set of rules that decides where your network traffic should
 - Allow only internal services to communicate
 - Secure server access in production
 
+</section>
+
 ---
 
-### watch – Repeatedly Run a Command (Live Monitoring)
+<section id="day04_watch">
+
+### `watch` – Repeatedly Run a Command (Live Monitoring)
 ```bash
-watch mtr youtube.com            # Runs every 2 sec (default)
-watch -n 5 mtr youtube.com       # Every 5 seconds
+watch mtr youtube.com          # Runs every 2 sec (default)
+watch -n 5 mtr youtube.com     # Every 5 seconds
 ```
 
 📺 watch runs a command again and again — refreshing the output in real time.
@@ -633,9 +720,13 @@ watch -n 5 mtr youtube.com       # Every 5 seconds
 - Watch logs or API responses
 - Debug real-time changes
 
+</section>
+
 ---
 
-### nmap – Scan Networks Like a Pro
+<section id="day04_nmap">
+
+### `nmap` – Scan Networks Like a Pro
 ```bash
 sudo apt install nmap
 nmap example.com
@@ -653,9 +744,13 @@ nmap example.com
 - Check exposed services
 - Validate firewall and network rules
 
+</section>
+
 ---
 
-### route – View or Edit Routing Table
+<section id="day04_route">
+
+### `route` – View or Edit Routing Table
 
 ```bash
 route -n
@@ -673,10 +768,25 @@ route -n
 ip route show
 ```
 
+</section>
+
 ---
 
+<section id="day04_summary_table">
+
 ## ✅ Final Recap Table
-| Command   | Purpose                                     | Common Use                 |
+| Command       | Purpose                                   | Notes                                  |
+| :------------ | :---------------------------------------- | :------------------------------------- |
+| `ip a`        | Show IP and interface status              | Modern `ifconfig`                      |
+| `iwconfig`    | Show Wi-Fi interfaces                     | Requires wireless-tools                |
+| `ss`          | Show open ports, connections              | Faster than `netstat`                  |
+| `dig`         | Deep DNS lookup                           | For checking DNS records               |
+| `whois`       | Domain ownership & registry info          | Good for audits & investigations       |
+| `nc`          | Network utility for port check, transfer, TCP tests | Swiss army knife for networking        |
+| `arp`         | IP-MAC mapping table                      | Useful in local networks               |
+| `ifplugstatus` | Check if ethernet cable is plugged in     | Great for quick hardware checks        |
+
+| Command    | Purpose                                     | Common Use                 |
 | :-------- | :------------------------------------------ | :------------------------- |
 | `curl`    | Talk to APIs, get or send data              | API testing                |
 | `wget`    | Download files via URL                      | Automation                 |
@@ -684,3 +794,5 @@ ip route show
 | `watch`   | Repeat a command every X seconds            | Monitoring                 |
 | `nmap`    | Scan systems for open ports and services    | Audit                      |
 | `route`   | Show routing rules (replaced by `ip route`) | Network                    |
+
+</section>
