@@ -473,3 +473,370 @@ If something goes wrong:
 
 ---
 
+<br>
+<br>
+
+# 🌐 IP Address & Subnets
+
+## 📦 What is an IP Address?
+- Imagine your device (laptop, phone, etc.) as a house, and the internet is the global postal service.
+
+- Just like each house needs a unique address to receive letters,
+every device needs a unique IP address to send and receive data.
+
+### 🧠 Definition:
+- An IP address (Internet Protocol address) is a unique identifier assigned to a device connected to a network so it can communicate with other devices.
+
+---
+
+<br>
+<br>
+
+# 🖥️ Why Do Devices Need IP Addresses?
+Today, we have a variety of smart devices:
+- 📱 Smartphones
+
+- 💻 Laptops
+
+- 📺 Smart TVs
+
+- ⌚ Smartwatches
+
+- 📟 Tablets
+
+➡️ Each of them must be uniquely identifiable on the internet or local network.
+Without an IP address, the internet won’t know where to send the data.
+
+> 📬 IP = Digital Home Address for devices <br>
+Used by the TCP/IP model (real-world) and also fits into OSI Layer 3 (Network Layer)
+
+---
+
+## 🧮 Types of IP Address Versions
+### 📄 IPv4 – Internet Protocol Version 4
+- Format: 192.168.1.1
+
+- Uses 32 bits = ~4.2 billion addresses
+
+- ✅ Widely used today
+
+- ❌ Problem: Not enough IPs for all devices on Earth
+
+### 🌍 IPv6 – Internet Protocol Version 6
+- Format: 2001:0db8:85a3:0000:0000:8a2e:0370:7334
+
+- Uses 128 bits = 340 undecillion IPs (massive!)
+
+- ✅ Solves the address limitation
+
+- ❌ Still not adopted fully everywhere (IPv4 still dominates)
+
+---
+
+<br>
+<br>
+
+## 🤯 So What’s the Problem With IPv4?
+There are only about 4.2 billion IPv4 addresses.
+But with billions of people and multiple devices per person, we ran out fast!
+
+Imagine if every device needed a real internet-facing IP, we’d have been done by now!
+
+---
+
+<br>
+<br>
+
+## 💡 What’s the Solution? – Subnets & Private IPs
+
+### 🌐 Solution 1: Private Networks + Subnets
+Instead of creating one massive internet, we create many small internal networks (like mini-internets).
+
+Each internal network can reuse private IP addresses (like 192.168.x.x, 10.x.x.x, etc.) behind a router or firewall using NAT (Network Address Translation).
+
+These internal networks are called subnets.
+
+---
+
+<br>
+<br>
+
+## 🧩 What is a Subnet?
+A subnet (sub-network) is a smaller section of a larger network — like rooms in a house.
+
+By dividing a large network into subnets:
+- Devices stay organized
+
+- Traffic is more efficient
+
+- IP addresses are reused smartly
+
+
+💡 In DevOps & Cloud:
+- You’ll often create subnets in AWS VPCs
+
+- You’ll assign private IPs and control traffic between them
+
+---
+
+<br>
+<br>
+
+## 🔢 IP Address Breakdown – Subnet Example
+Let’s say:
+
+```yaml
+IP: 192.168.10.5
+Subnet Mask: 255.255.255.0
+
+Network part: 192.168.10
+Host part: .5 (device number in network)
+```
+This means:
+- All devices in 192.168.10.X belong to the same subnet
+
+- The .5 is the unique address within that subnet
+
+---
+
+<br>
+<br>
+
+## ✅ Final Summary
+| Term        | Meaning                                                              |
+| ----------- | -------------------------------------------------------------------- |
+| IP Address  | Unique number to identify a device on a network                      |
+| IPv4        | Older version, 32-bit, \~4.2 billion addresses (e.g., `192.168.1.1`) |
+| IPv6        | Newer version, 128-bit, 340 undecillion addresses                    |
+| Subnet      | A logical division of a large network                                |
+| NAT         | Allows many private IPs to use one public IP for internet access     |
+| Private IPs | Used inside local networks (not directly reachable from internet)    |
+
+---
+
+<br>
+<br>
+
+## 👨‍💻 As a DevOps Engineer, You’ll Use:
+- Private/Public IPs when deploying servers
+
+- Subnets when setting up cloud networks (like AWS VPC)
+
+- CIDR notation for subnetting (e.g., 10.0.0.0/24)
+
+- ping, ip addr, ifconfig, ipcalc, etc. to manage networks
+
+---
+
+<br>
+<br>
+
+# ☁️ AWS Networking Essentials: VPC, Subnets, Security Groups, NAT & DNS
+
+## 🧠 What is a VPC?
+- VPC (Virtual Private Cloud) is like your own private network inside AWS.
+
+- Imagine AWS as a huge city 🏙️, and you get your own private colony inside it. That’s a VPC.
+
+### 🔑 Key Points:
+- You control IP ranges, subnets, routing, and firewall rules.
+
+- VPCs are isolated, so IPs won’t clash between users.
+
+- Each EC2 instance you launch lives inside a subnet → inside a VPC.
+
+---
+
+<br>
+<br>
+
+🧩 VPC Structure Breakdown
+```scss
+Copy
+Edit
+🌐 AWS Cloud
+   └── VPC (Your Private Network)
+        └── Subnets (Smaller segmented networks: Public & Private)
+             └── EC2 Instances (Virtual Machines)
+
+➡️ You can have multiple subnets within a VPC — think of them as rooms in your house.
+```
+
+<br>
+<br>
+
+## 🌍 IP Addressing Inside VPC
+- Every device (EC2 instance) inside a VPC gets a unique private IP.
+
+- If you enable auto-assign public IP, it gets a public IP too.
+
+- IPs don’t conflict because each VPC has its own CIDR range.
+
+---
+
+<br>
+<br>
+
+## 🔥 What is a Security Group (SG)?
+- A Security Group is like a firewall for your EC2 instance.
+
+### 📌 It controls:
+
+- Who can connect to your server
+
+- What type of traffic is allowed (HTTP, SSH, etc.)
+
+> 💡 SG is stateful — if you allow incoming traffic on a port, the response is automatically allowed out.
+
+---
+
+<br>
+<br>
+
+## 🔐 Example: Allow Only Your PC to SSH
+- Let’s say you want only your personal computer to connect to the EC2 instance via SSH:
+
+- Go to your SG in AWS.
+
+Edit inbound rules:
+
+- Type: SSH
+
+- Port: 22
+
+- Source: Your IP Address/32 (get it from whatismyip.com)
+
+> ✅ Now, only your IP can access the EC2 server via SSH.
+
+---
+
+<br>
+<br>
+
+## 🖥️ Connecting to EC2 Using Public IP
+Once the instance is launched:
+
+- Use AWS EC2 Connect (browser) or
+
+- Use terminal + .pem key and public IP
+
+```bash
+ssh -i mykey.pem ubuntu@<public-ip>
+```
+
+<br>
+<br>
+
+## 🌐 Live Webpage Hosting on EC2 (Ubuntu)
+Now let’s make your server public by installing a web server:
+
+```bash
+sudo apt update
+sudo apt install nginx
+cd /var/www/html
+sudo vim index.html
+
+# 👉 Add HTML:
+
+<h1>Hello, I am Prashant Gohel</h1>
+Then save file (Esc + :wq)
+
+# Check server:
+
+sudo systemctl status nginx
+```
+
+---
+
+<br>
+<br>
+
+## ❌ Can’t Access Page? Firewall (SG) is Blocking
+By default, port 80 is blocked.
+
+> ✅ Fix: Add HTTP rule in Security Group
+
+- Type: HTTP
+
+- Port: 80
+
+- Source: Anywhere (0.0.0.0/0)
+
+Now, open:
+
+```bash
+http://<your-ec2-public-ip>
+
+# 🎉 Your webpage is live!
+```
+
+----
+
+<br>
+<br>
+
+## 🔄 What is NAT?
+NAT (Network Address Translation) allows instances in a private subnet to access the internet securely.
+
+### 💡 Use Case:
+
+- You want backend servers to update software (apt, yum, etc.) but not be publicly accessible.
+
+- NAT Gateway allows outbound internet access without exposing them to the public.
+
+---
+
+## 🌐 DNS: Domain Instead of IP
+Right now, your site is only accessible via IP — but you want something like:
+
+www.prashantgohel.in
+
+### Steps:
+- Buy a domain (e.g., from GoDaddy)
+
+- Point the domain to your EC2 public IP via DNS settings
+
+- Go to GoDaddy DNS manager
+
+Add an A record:
+
+```vbnet
+Host: @
+Type: A
+Points to: <your-ec2-public-ip>
+TTL: Default
+```
+> ✅ Now, your website can be accessed using your domain!
+
+---
+
+<br>
+<br>
+
+## 🧠 OSI Model Behind the Scenes (Quick Review)
+| OSI Layer    | Your Activity                                    |
+| ------------ | ------------------------------------------------ |
+| Application  | Open browser → EC2 Connect or Website            |
+| Presentation | AWS encrypts data for security (HTTPS)           |
+| Session      | Your browser session to EC2 remains active       |
+| Transport    | Data sent via TCP (port 22 for SSH, 80 for HTTP) |
+| Network      | IP routing (public/private IP)                   |
+| Data Link    | Ethernet/WiFi to router                          |
+| Physical     | Fiber cables, routers, network cards             |
+
+---
+
+<br>
+<br>
+
+## ✅ Summary
+| Concept        | Real-World Meaning                              |
+| -------------- | ----------------------------------------------- |
+| VPC            | Your private AWS network                        |
+| Subnet         | Small segment of a VPC                          |
+| Security Group | Firewall that controls traffic to/from EC2      |
+| NAT            | Allows private instances to access the internet |
+| DNS            | Maps a domain to your EC2 public IP             |
+
+---
+
