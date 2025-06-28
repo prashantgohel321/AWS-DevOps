@@ -1,4 +1,4 @@
-# 🌐 Introduction to Computer Networking (CN)
+# 🌐 Computer Networking (CN)
 
 ## List of Contents
 * <a href="#cn_what_is">01 What is Computer Networking?</a>
@@ -77,6 +77,9 @@
 
 ---
 
+<br>
+<br>
+
 <section id="cn_what_is">
 
 ## 🧠 What is Computer Networking?
@@ -101,6 +104,9 @@ In simple terms:
 
 ---
 
+<br>
+<br>
+
 <section id="cn_why_devops_matters">
 
 ## 🤔 Why Networking Matters in DevOps?
@@ -120,6 +126,9 @@ In short, you can’t do DevOps without a good grip on networking.
 </section>
 
 ---
+
+<br>
+<br>
 
 <section id="cn_how_internet_works">
 
@@ -141,6 +150,7 @@ So when you visit www.netflix.com, here’s what happens:
 </section>
 
 <section id="cn_internet_journey">
+<br>
 
 ## 🌐 Step-by-Step Internet Journey
 
@@ -206,6 +216,9 @@ It sends small packets to Google and shows if it’s reachable and how long it t
 </section>
 
 ---
+
+<br>
+<br>
 
 <section id="osi_model">
 
@@ -419,6 +432,10 @@ OSI is more than theory. You’ll use it when:
 
 ---
 
+<br>
+
+<br>
+
 <section id="tcp_ip_model">
 
 # 🌐 TCP/IP Reference Model
@@ -440,6 +457,8 @@ The TCP/IP Model **(Transmission Control Protocol / Internet Protocol)** is the 
 
 ---
 
+<br>
+
 <section id="tcp_ip_osi_comparison">
 
 ### 🔢 TCP/IP vs OSI – Layer Comparison Table
@@ -454,6 +473,8 @@ The TCP/IP Model **(Transmission Control Protocol / Internet Protocol)** is the 
 </section>
 
 ---
+
+<br>
 
 <section id="tcp_ip_layer_explanation">
 
@@ -490,6 +511,8 @@ The TCP/IP Model **(Transmission Control Protocol / Internet Protocol)** is the 
 
 ---
 
+<br>
+
 <section id="tcp_ip_transport_layer">
 
 ### 🚚 2. Transport Layer (Data Delivery 📦)
@@ -514,6 +537,8 @@ The TCP/IP Model **(Transmission Control Protocol / Internet Protocol)** is the 
 </section>
 
 ---
+
+<br>
 
 <section id="tcp_ip_internet_layer">
 
@@ -572,6 +597,8 @@ The TCP/IP Model **(Transmission Control Protocol / Internet Protocol)** is the 
 
 ---
 
+<br>
+
 <section id="tcp_ip_end_to_end_flow">
 
 ## 🔁 End-to-End Flow Example
@@ -587,6 +614,8 @@ The TCP/IP Model **(Transmission Control Protocol / Internet Protocol)** is the 
 </section>
 
 ---
+
+<br>
 
 <section id="tcp_ip_final_tip">
 
@@ -606,7 +635,8 @@ If something goes wrong:
 </section>
 
 ---
-
+<br>
+<br>
 <section id="ip_address_subnets">
 
 # 🌐 IP Address & Subnets
@@ -625,6 +655,8 @@ every device needs a unique IP address to send and receive data.
 </section>
 
 ---
+
+<br>
 
 <section id="ip_address_why_needed">
 
@@ -650,6 +682,8 @@ Used by the TCP/IP model (real-world) and also fits into OSI Layer 3 (Network La
 
 ---
 
+<br>
+
 <section id="ip_address_versions">
 
 ## 🧮 Types of IP Address Versions
@@ -674,6 +708,8 @@ Used by the TCP/IP model (real-world) and also fits into OSI Layer 3 (Network La
 </section>
 
 ---
+
+<br>
 
 <section id="ip_address_ipv4_problem">
 
@@ -701,6 +737,8 @@ These internal networks are called subnets.
 </section>
 
 ---
+
+<br>
 
 <section id="ip_address_subnet_what_is">
 
@@ -745,6 +783,8 @@ This means:
 
 ---
 
+<br>
+
 <section id="ip_address_summary">
 
 ## ✅ Final Summary
@@ -760,6 +800,8 @@ This means:
 </section>
 
 ---
+
+<br>
 
 <section id="ip_address_devops_use">
 
