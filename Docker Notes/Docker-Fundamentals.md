@@ -1,24 +1,19 @@
 # Docker Basics
 
-<details>
-<summary><strong>Host OS and Guest OS</strong></summary>
-
-<br>
+## Host OS and Guest OS
 
 
 **Host OS**: This is the main operating system that runs on your physical computer hardware and manages the system's resources.
 - **Examples** include Windows and macOS.
 
+<br>
+
 **Guest OS**: This operating system runs on a Virtual Machine (VM). A VM is a software-based emulator of a computer that allows multiple operating systems to run on a single physical machine.
 
-</details>
 
 <br>
 
-<details>
-<summary><strong>Virtual Machines</strong></summary>
-
-<br>
+## Virtual Machines
 
 - A VM is a **software-based computer** that **runs on top of another computer's OS**.
 
@@ -26,40 +21,31 @@
 
 - VMs **provide a complete environment**, including CPU, memory, storage, and other components.
 
-</details>
 
 <br>
 
-<details>
-<summary><strong> How VMs Work & Hypervisors </strong></summary>
-
-<br>
+## How VMs Work & Hypervisors 
 
 **Hypervisor**: This is a type of software that **creates and manages VMs**. It **allocates resources from the host machine to the VMs**. Each **VM has its own OS, apps, and configuration**.
 
 - A hypervisor acts as **an interface between the hardware and the VMs**. It abstracts the physical hardware, creating a virtual environment where different OS and applications can coexist.
 
+<br>
+
 **VM vs. Hypervisor**: A **hypervisor** is the software that enables multiple VMs to run on a single physical machine. A **VM**, on the other hand, is the **virtualized instance of a computer**, complete with its own OS and apps, managed by a hypervisor.
 
-<details>
-<summary><strong> Types of Hypervisors 📚 </strong></summary>
-
 <br>
+
+## Types of Hypervisors 📚 
 
 **Bare-Metal (Type 1)**: Installed directly on the computer's hardware. It manages hardware resources and allocates them directly to the VMs.
 
 **Hosted (Type 2)**: Installed as an application on top of an existing operating system.
 
-</details>
-
-</details>
 
 <br>
 
-<details>
-<summary><strong> OS-Level Virtualization (Containerization) </strong></summary>
-
-<br>
+## OS-Level Virtualization (Containerization)
 
 - Also known as **containerization**.
 
@@ -69,14 +55,9 @@
 
 - This differs from traditional virtualization where each VM has its own full OS.
 
-</details>
-
 <br>
 
-<details>
-<summary><strong> What is Docker? 🐳 </strong></summary>
-
-<br>
+## What is Docker? 🐳 
 
 - Docker is **a software-based platform** that uses **OS-level virtualization to deliver software in packages** called containers.
 
@@ -86,14 +67,11 @@
 
 - Docker enables developers to build, test, and deploy applications quickly and efficiently, ensuring consistent performance across different environments.
 
-</details>
 
 <br>
 
-<details>
-<summary><strong> Docker Containers </strong></summary>
+## Docker Containers 
 
-<br>
 
 - Containers are **isolated environments for running applications**.
 
@@ -101,14 +79,10 @@
 
 - Containers **ensure consistency across different environments** because they package all dependencies for the application.
 
-</details>
 
 <br>
 
-<details>
-<summary><strong> What is WSL? (Windows Subsystem for Linux) </strong></summary>
-
-<br>
+## What is WSL? (Windows Subsystem for Linux) 
 
 - WSL is **a compatibility layer developed by Microsoft**.
 
@@ -134,14 +108,8 @@ wsl -l -v
 wsl --shutdown 
 ```
 
-</details>
 
-<br>
-
-<details>
-<summary><strong> Docker Image </strong></summary>
-
-<br>
+## Docker Image
 
 - A Docker image is **a template containing instructions** for executing a Docker container.
 
@@ -155,12 +123,10 @@ wsl --shutdown
 
 - You don't always have to write your own Dockerfile; you **can pull pre-built official images from Docker Hub**.
 
-</details>
 
 <br>
 
-<details>
-<summary><strong> Virtualization vs. Containerization </strong></summary>
+## Virtualization vs. Containerization 
 
 <br>
 
@@ -173,25 +139,21 @@ wsl --shutdown
 | **Isolation**    | Hypervisor creates isolated VMs, each with its own OS.                                               | Containers create isolated instances that share the host OS kernel but have their own separate environment.      |
 
 
-</details>
-
 <br>
 
-<details>
-<summary><strong> Docker Architecture 🏗️ </strong></summary>
-
-<br>
+## Docker Architecture 🏗️ 
 
 The core components of Docker architecture include:
 
 1. **Docker Engine**: This is the **core component that runs on the host machine** and is **responsible for building, running, and managing containers**. It includes:
 
-- **Docker Daemon (`dockerd`)**: A **background service** that manages Docker objects like containers, images, volumes, and networks. It listens for Docker API requests and handles all container operations.
+    - **Docker Daemon (`dockerd`)**: A **background service** that manages Docker objects like containers, images, volumes, and networks. It listens for Docker API requests and handles all container operations.
 
-- **containerd**: **Used by `dockerd`** to **manage container lifecycle operations**, such as starting, stopping, and deleting containers.
+    - **containerd**: **Used by `dockerd`** to **manage container lifecycle operations**, such as starting, stopping, and deleting containers.
 
 2. **Docker CLI (Command Line Interface)**: This is a tool used **to interact with Docker by sending terminal commands**. These CLI commands are **sent as API requests to `dockerd`**, which then performs the requested action through `containerd` and the Docker Engine.
 
+<br>
 
 **How Docker Works Together**
 1. You enter a command using the Docker CLI.
@@ -202,12 +164,9 @@ The core components of Docker architecture include:
 
 4. The task is executed by the Docker Engine, and you see the result on your terminal.
 
-</details>
-
 <br>
 
-<details>
-<summary><strong> Docker Commands 🚀 </strong></summary>
+## Docker Commands 🚀 
 
 <br>
 
@@ -236,44 +195,3 @@ Run in detached mode (-d): Use `docker run -d <image-name>` to run the container
 `docker ps`: Views only running containers.
 
 `docker ps -a`: Views all containers (running and stopped).
-
-</details>
-
-<br>
-
-<details>
-<summary><strong>  </strong></summary>
-
-<br>
-
-</details>
-
-<br>
-
-<details>
-<summary><strong>  </strong></summary>
-
-<br>
-
-</details>
-
-<br>
-
-<details>
-<summary><strong>  </strong></summary>
-
-<br>
-
-</details>
-
-<br>
-
-<details>
-<summary><strong>  </strong></summary>
-
-<br>
-
-</details>
-
-<br>
-
