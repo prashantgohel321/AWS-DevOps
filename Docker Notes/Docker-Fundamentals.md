@@ -138,6 +138,9 @@ wsl --shutdown
 | **Startup Time** | VMs take longer to start because they boot their own OS.                                             | Containers are fast to start because they share the host OS kernel.                                              |
 | **Isolation**    | Hypervisor creates isolated VMs, each with its own OS.                                               | Containers create isolated instances that share the host OS kernel but have their own separate environment.      |
 
+<br>
+
+<img src="./images/01.jpg">
 
 <br>
 
@@ -195,3 +198,8 @@ Run in detached mode (-d): Use `docker run -d <image-name>` to run the container
 `docker ps`: Views only running containers.
 
 `docker ps -a`: Views all containers (running and stopped).
+
+
+---
+
+
