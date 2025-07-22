@@ -143,3 +143,31 @@ This command reads your docker-compose.yml file and starts all services at once,
 - Everything is defined in one .yaml file — reusable, versioned, and clean.
 
 - depends_on + healthcheck make your containers production-ready by ensuring services are actually usable before depending on them.
+
+---
+
+<br>
+
+### 🛑 Stop & Remove All Containers (via Docker Compose):
+```bash
+docker compose down
+```
+
+This will:
+
+- Stop all running containers defined in docker-compose.yml
+
+- Remove containers, default networks, and any linked volumes (if specified)
+
+---
+
+<br>
+
+### 🔁 Force Rebuild and Run All Services:
+```bash
+docker compose up -d --build
+```
+
+- **`-d`**: Runs in detached mode (in the background)
+
+- **`--build`**: Forces Docker to rebuild images before starting containers.
