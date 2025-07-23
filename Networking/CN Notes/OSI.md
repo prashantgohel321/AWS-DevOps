@@ -29,6 +29,8 @@ OSI (Open Systems Interconnection) Model is a framework that standardizes how da
 
 It has 7 layers, each with a specific role in ensuring smooth, secure, and reliable communication.
 
+<img src="Diagrams/01_OSI.webp">
+
 </section>
 
 <section id="osi_analogy_main">
@@ -67,6 +69,9 @@ This is where A and B run the actual game app (e.g., PUBG, Fortnite).
 
 > 💡 In DevOps, you work with these protocols while managing servers and web apps.
 
+<img src="Diagrams/02_OSI.webp">
+
+
 </section>
 
 ---
@@ -85,6 +90,9 @@ A and B are seeing graphics, using keyboard, listening to game sounds, and the d
 - Also responsible for SSL/TLS encryption (important in HTTPS).
 
 > 🛡️ Think of this as the syntax and security formatting of the data.
+
+<img src="Diagrams/03_OSI.webp">
+
 
 </section>
 
@@ -111,6 +119,9 @@ Before playing, a connection is established between A and B (like a game lobby).
 
 > 👉 Socket: Real-time data channel (e.g., online multiplayer game, live chat)
 
+<img src="Diagrams/04_OSI.webp">
+
+
 </section>
 
 ---
@@ -131,6 +142,9 @@ The game data like movements, actions, chat is now broken into packets and sent 
 **UDP (User Datagram Protocol)** – Faster but no guarantee (used in live games, video calls)
 
 > 🧪 You’ll hear this in DevOps when setting up ports, firewalls, or troubleshooting connection issues.
+
+<img src="Diagrams/05_OSI.webp">
+
 
 </section>
 
@@ -158,6 +172,9 @@ traceroute google.com    # Linux/macOS
 tracert google.com      # Windows
 ```
 
+<img src="Diagrams/06_OSI.webp">
+
+
 </section>
 
 ---
@@ -179,6 +196,9 @@ Now the data is being transferred within the same local network (e.g., from your
 ip link show
 ```
 
+<img src="Diagrams/07_OSI.webp">
+
+
 </section>
 
 ---
@@ -195,6 +215,9 @@ Finally, all of this data flows through real hardware – like fiber optic cable
 #### Includes: Cables, Switches, Hubs, Connectors, NICs.
 
 > 💡 Without this, the internet wouldn’t exist physically.
+
+<img src="Diagrams/08_OSI.webp">
+
 
 </section>
 
