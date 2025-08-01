@@ -22,7 +22,7 @@ This end-to-end process should run continuously and automatically — this is wh
 <br>
 <br>
 
-# 💥 Why Automation is Needed?
+# Why Automation is Needed?
 Sometimes, the process can fail — for example, if the Docker build fails, the deployment to EC2 and Prometheus won’t happen.
 
 To ensure everything runs smoothly and quickly, DevOps Engineers automate this process **to reduce manual work** and **speed up delivery**.
@@ -32,7 +32,7 @@ This is where Jenkins comes in — **a popular open-source automation server** t
 <br>
 <br>
 
-# ⏱️ What is Time to Market?
+# What is Time to Market?
 Time to Market (TTM) refers to **how quickly a product or feature goes from idea to availability for users**.
 
 **DevOps helps reduce this time by automating** builds, testing, and deployment, allowing faster and more reliable software releases.
@@ -40,15 +40,15 @@ Time to Market (TTM) refers to **how quickly a product or feature goes from idea
 <br>
 <br>
 
-# 🔄 What is CI/CD?
-## ✅ Continuous Integration (CI):
+# What is CI/CD?
+## Continuous Integration (CI):
 - Developers frequently push code to a shared GitHub repository.
 
 - Every time code is pushed, Jenkins runs automated builds and tests.
 
 - This helps catch bugs early and ensures all code changes work well together.
 
-## 🚚 Continuous Delivery (CD):
+## Continuous Delivery (CD):
 - Builds on CI.
 
 - After successful tests, the application is always in a ready-to-release state.
@@ -57,7 +57,7 @@ Time to Market (TTM) refers to **how quickly a product or feature goes from idea
 
 - Helps teams release frequently with confidence.
 
-## ⚡ Continuous Deployment (CD):
+## Continuous Deployment (CD):
 - Goes one step beyond Continuous Delivery.
 
 - After passing all tests, the code is automatically deployed to production — no manual steps involved.
@@ -67,7 +67,7 @@ Time to Market (TTM) refers to **how quickly a product or feature goes from idea
 <br>
 <br>
 
-# 🛠️ Summary:
+# Summary:
 - Jenkins automates the entire CI/CD process.
 
 - It helps DevOps engineers save time, reduce errors, and release updates faster.
