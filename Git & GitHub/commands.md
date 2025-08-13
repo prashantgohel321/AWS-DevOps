@@ -1,367 +1,266 @@
-```bash
-git log --author="Author Name" --pretty=format:"%h - %s (%ci)" > commits.txt
+# Useful Git Commands
 
-Example:
-git log --author="Prashant Gohel" --pretty=format:"%h - %s (%ci)" > prashant_commits.txt
-```
+A curated list of Git commands for analyzing repositories, tracking contributions, and debugging.
 
-> The command I likely gave you to store the commit history of a specific contributor in a .txt file
-
-### Explanation:
-- **`--author="Author Name"`**: Filter commits by a specific contributor.
-
-- **`--pretty=format`**:"%h - %s (%ci)": Format the output to show commit hash, message, and commit date.
-
-- > **`commits.txt`**: Save the output to a file named commits.txt.
-
-
-
---------
-
-<br>
-<br>
-<br>
-
-### All commits by a contributor (detailed)
-```bash
-git log --author="Author Name"
-```
-
-```bash
-git shortlog -sn
-    43  prashantgohel321
-    36  tanvirmulla11
-    11  Gohel Prashant
-     5  prashant321
-     2  prashantgohel11
-     1  tanvirmulla73@gmail.com
-```
+## Table of Contents
+- [Commit & Author Insights](#commit--author-insights)
+- [File & Code History](#file--code-history)
+- [Timeline & Project Overview](#timeline--project-overview)
+- [Cleanup & Debugging](#cleanup--debugging)
+- [Stats & Reports](#stats--reports)
 
 ---
-
-<br>
-<br>
-<br>
-
-### Count total commits by each contributor
-```bash
-git shortlog -sn
-```
-### Example Output:
-```bash
-git shortlog -sn
-    43  prashantgohel321
-    36  tanvirmulla11
-    11  Gohel Prashant
-     5  prashant321
-     2  prashantgohel11
-     1  tanvirmulla73@gmail.com
-```
-
----
-
-
-### Count commits by a specific author
-
-```bash
-git shortlog -sn --author="Author Name"
-```
-
----
-
-<br>
-<br>
-<br>
-
-### Show files changed by a specific contributor:
-```bash
-git log --author="Author Name" --name-only --pretty=format: | sort | uniq
-```
-
-<br>
-<br>
-<br>
-
-### See who last modified each line (blame):
-
-```bash
-git blame path/to/file
-```
-
----
-
-<br>
-<br>
-<br>
-
-### Diff for a specific file between commits:
-
-```bash
-git diff commit1 commit2 -- path/to/file
-```
-
-<br>
-<br>
-<br>
-
-### See commit history as a graph (great for teams):
-
-```bash
-git log --oneline --graph --all --decorate
-```
-
-<br>
-<br>
-<br>
-
-### See untracked files:
-
-```bash
-git clean -n
-```
-
-> Add -f to actually delete them:
-
-```bash
-git clean -f
-```
-
-
----
-
-
-<br>
-<br>
-<br>
 
 ## Commit & Author Insights
 
-### Show commits by a specific contributor
-```bash
-git log --author="Prashant Gohel" --pretty=format:"%h - %s (%ci)"
-```
+Commands to get information about commits and contributors.
 
-- **Use**: Filter commits by a contributor, showing hash, message, and date.
+### 1. Show commits by a specific contributor
+- **Use**: Filter commits by a contributor, showing the commit hash, message, and date.
+- **Command**:
+  ```bash
+  git log --author="Author Name" --pretty=format:"%h - %s (%ci)"
+  ```
+- **Example**:
+  ```bash
+  git log --author="Prashant Gohel" --pretty=format:"%h - %s (%ci)"
+  ```
+- **Sample Output**:
+  ```
+  a7c3e1b - Added Dockerfile for backend (2025-08-10 14:21:33 +0530)
+  98d23f1 - Fixed EC2 security group issue (2025-08-08 09:10:45 +0530)
+  ```
 
-Sample Output:
-```bash
-a7c3e1b - Added Dockerfile for backend (2025-08-10 14:21:33 +0530)
-98d23f1 - Fixed EC2 security group issue (2025-08-08 09:10:45 +0530)
-```
+### 2. Store commit history to a file
+- **Use**: Save the formatted commit history of a specific contributor to a text file.
+- **Command**:
+  ```bash
+  git log --author="Author Name" --pretty=format:"%h - %s (%ci)" > commits.txt
+  ```
+- **Example**:
+  ```bash
+  git log --author="Prashant Gohel" --pretty=format:"%h - %s (%ci)" > prashant_commits.txt
+  ```
+
+### 3. Count commits per contributor
+- **Use**: Quickly see how many commits each person has made.
+- **Command**:
+  ```bash
+  git shortlog -sn
+  ```
+- **Sample Output**:
+  ```
+     56  Prashant Gohel
+     43  Tanvir Mulla
+     12  John Doe
+  ```
+
+### 4. Show files changed by a contributor
+- **Use**: Find all unique files a specific contributor has worked on.
+- **Command**:
+  ```bash
+  git log --author="Author Name" --name-only --pretty=format: | sort | uniq
+  ```
+- **Example**:
+    ```bash
+    git log --author="Prashant Gohel" --name-only --pretty=format: | sort | uniq
+    ```
+- **Sample Output**:
+  ```
+  Dockerfile
+  README.md
+  src/main/java/App.java
+  ```
 
 ---
-
-<br>
-<br>
-<br>
-
-### Count commits per contributor
-```bash
-git shortlog -sn
-```
-
-- **Use**: Quickly see who contributed how much.
-Sample Output:
-
-```bash
-   56  Prashant Gohel
-   43  Tanvir Mulla
-   12  John Doe
-```
-
----
-
-<br>
-<br>
-<br>
-
-### Show files changed by a contributor
-```bash
-git log --author="Prashant Gohel" --name-only --pretty=format: | sort | uniq
-```
-
-- **Use**: Find all files a contributor worked on.
-Sample Output:
-
-```bash
-Dockerfile
-src/main/java/App.java
-README.md
-```
-
-<br>
-<br>
-<br>
 
 ## File & Code History
 
-### Who changed what line (Blame)
-```bash
-git blame src/main/java/App.java
-```
+Commands to inspect changes to files and lines of code.
 
-- **Use**: See who last touched each line of a file and when.
+### 5. See who changed what and when (Blame)
+- **Use**: See who last touched each line of a file. This is useful for finding out who wrote a specific piece of code.
+- **Command**:
+  ```bash
+  git blame path/to/file
+  ```
+- **Example**:
+    ```bash
+    git blame src/main/java/App.java
+    ```
+- **Sample Output**:
+  ```
+  a7c3e1b (Prashant Gohel 2025-08-10 14:21:33 +0530 1) public static void main(String[] args) {
+  98d23f1 (Tanvir Mulla  2025-08-08 09:10:45 +0530 2)     System.out.println("Hello World");
+  ```
 
-Sample Output:
-```bash
-a7c3e1b (Prashant Gohel 2025-08-10 14:21:33 +0530) public static void main(String[] args) {
-98d23f1 (Tanvir Mulla 2025-08-08 09:10:45 +0530)     System.out.println("Hello World");
-```
+### 6. Show a file's history
+- **Use**: Track all changes made to a file, even if it was renamed.
+- **Command**:
+  ```bash
+  git log --follow path/to/file
+  ```
+- **Example**:
+    ```bash
+    git log --follow src/main/java/App.java
+    ```
+- **Sample Output**:
+  ```
+  commit a7c3e1b
+  Author: Prashant Gohel
+  Date:   Tue Aug 10 14:21:33 2025 +0530
 
-<br>
-<br>
-<br>
+      Added main method
 
-### Show file history
-```bash
-git log --follow src/main/java/App.java
-```
+  commit 98d23f1
+  Author: Tanvir Mulla
+  Date:   Mon Aug 8 09:10:45 2025 +0530
 
-- **Use**: Track changes to a file, even after renaming.
+      Created App.java
+  ```
 
-Sample Output:
-```bash
-commit a7c3e1b
-Author: Prashant Gohel
-Date:   Tue Aug 10 14:21:33 2025 +0530
+### 7. Find commits that changed specific lines
+- **Use**: Shows the history for a specific range of lines in a file.
+- **Command**:
+  ```bash
+  git log -L <start_line>,<end_line>:path/to/file
+  ```
+- **Example**:
+    ```bash
+    git log -L 20,30:src/main/java/App.java
+    ```
 
-    Added main method
+### 8. Show the difference for a file between two commits
+- **Use**: Compare the changes made to a single file between two different commits.
+- **Command**:
+  ```bash
+  git diff <commit1> <commit2> -- path/to/file
+  ```
 
-commit 98d23f1
-Author: Tanvir Mulla
-Date:   Mon Aug 8 09:10:45 2025 +0530
-
-    Created App.java
-```
-
-<br>
-<br>
-<br>
+---
 
 ## Timeline & Project Overview
 
-### Commit graph
-```bash
-git log --oneline --graph --all --decorate
-```
+Commands for a high-level view of the project's history.
 
-- **Use**: Visualize branches and merges.
+### 9. View commit history as a graph
+- **Use**: Visualize branches and merges to understand the project's history flow.
+- **Command**:
+  ```bash
+  git log --oneline --graph --all --decorate
+  ```
+- **Sample Output**:
+  ```
+  * a7c3e1b (HEAD -> main, origin/main) Added Dockerfile
+  | * 12f9c21 (feature-ec2) EC2 instance setup
+  |/
+  * 98d23f1 Initial commit
+  ```
 
-Sample Output:
-```bash
-* a7c3e1b (HEAD -> main, origin/main) Added Dockerfile
-| * 12f9c21 (feature-ec2) EC2 instance setup
-|/
-* 98d23f1 Initial commit
-```
+### 10. See commits within a date range
+- **Use**: Filter and view commits made within a specific period.
+- **Command**:
+  ```bash
+  git log --since="YYYY-MM-DD" --until="YYYY-MM-DD" --pretty=format:"%h - %s (%ci)"
+  ```
+- **Example**:
+    ```bash
+    git log --since="2025-08-01" --until="2025-08-10" --pretty=format:"%h - %s (%ci)"
+    ```
+- **Sample Output**:
+  ```
+  a7c3e1b - Added Dockerfile for backend (2025-08-10 14:21:33 +0530)
+  98d23f1 - Fixed EC2 security group issue (2025-08-08 09:10:45 +0530)
+  ```
 
-<br>
-<br>
-<br>
-
-### Commits in date range
-```bash
-git log --since="2025-08-01" --until="2025-08-10" --pretty=format:"%h - %s (%ci)"
-```
-- **Use**: See commits within a period.
-Sample Output:
-
-```bash
-a7c3e1b - Added Dockerfile for backend (2025-08-10 14:21:33 +0530)
-98d23f1 - Fixed EC2 security group issue (2025-08-08 09:10:45 +0530)
-```
-
-<br>
-<br>
-<br>
+---
 
 ## Cleanup & Debugging
 
-### Show untracked files
+Commands to help clean your working directory and find issues.
 
+### 11. Preview untracked files before deleting
+- **Use**: Shows which untracked files will be removed without actually deleting them (a "dry run").
+- **Command**:
+  ```bash
+  git clean -n
+  ```
+- **Sample Output**:
+  ```
+  Would remove temp.log
+  Would remove build/
+  ```
 
-```bash
-git clean -n
-```
-- **Use**: Preview untracked files that can be deleted.
+### 12. Delete untracked files
+- **Use**: Permanently removes untracked files from your working directory. **Use with caution!**
+- **Command**:
+  ```bash
+  git clean -f
+  ```
 
-Sample Output:
+### 13. Find deleted files in commit history
+- **Use**: See which files have been deleted in past commits.
+- **Command**:
+  ```bash
+  git log --diff-filter=D --summary
+  ```
+- **Sample Output**:
+  ```
+  commit a7c3e1b...
+  Author: Prashant Gohel
+  Date:   ...
 
-```bash
-Would remove temp.log
-Would remove build/
-```
+      Refactored configuration
 
-<br>
-<br>
-<br>
+   delete mode 100644 old_config.yml
+  ```
 
-### Find deleted files
-```bash
-git log --diff-filter=D --summary
-```
+---
 
-- **Use**: See files deleted in commits.
+## Stats & Reports
 
-Sample Output: 
-```bash
-delete mode 100644 old_config.yml
-```
+Commands to generate statistics about the repository.
 
-<br>
-<br>
-<br>
+### 14. Show commit count per day
+- **Use**: Displays the number of commits made each day.
+- **Command**:
+  ```bash
+  git log --date=short --pretty=format:'%ad' | sort | uniq -c
+  ```
+- **Sample Output**:
+  ```
+    2 2025-08-01
+    5 2025-08-02
+    1 2025-08-05
+  ```
 
-### Find commits touching specific lines
+### 15. Show diff stats for a contributor
+- **Use**: Shows the number of lines added and removed (insertions/deletions) for each commit by a specific author.
+- **Command**:
+  ```bash
+  git log --author="Author Name" --stat
+  ```
+- **Example**:
+    ```bash
+    git log --author="Prashant Gohel" --stat
+    ```
+- **Sample Output**:
+  ```
+  commit a7c3e1b...
+  Author: Prashant Gohel
+  Date:   ...
 
-```bash
-git log -L 20,30:src/main/java/App.java
-```
-- **Use**: Shows history for specific line numbers in a file.
+      Updated application logic
 
-Sample Output:
+   src/main/java/App.java | 10 ++++++----
+   1 file changed, 6 insertions(+), 4 deletions(-)
 
-```bash
-commit a7c3e1b
-Author: Prashant Gohel
-Changed line 20 from `System.out.println("Test")` to `System.out.println("Hello")`
-```
+  commit 98d23f1...
+  Author: Prashant Gohel
+  Date:   ...
 
-<br>
-<br>
-<br>
+      Added Dockerfile
 
-## 📊 Stats & Reports
-### Commits per day
-
-```bash
-git log --date=short --pretty=format:'%ad' | sort | uniq -c
-```
-- **Use**: Shows daily commit count.
-
-Sample Output:
-
-```bash
-  2 2025-08-01
-  5 2025-08-02
-  1 2025-08-05
-```
-
-<br>
-<br>
-<br>
-
-### Contributor's diff stats
-
-```bash
-git log --author="Prashant Gohel" --stat
-```
-
-- **Use**: Shows number of changes (insertions/deletions) for each commit.
-
-Sample Output:
-
-```bash
-src/main/java/App.java | 10 ++++++----
-Dockerfile             |  5 +++--
-```
+   Dockerfile             |  5 +++--
+   1 file changed, 3 insertions(+), 2 deletions(-)
+  
