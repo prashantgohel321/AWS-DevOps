@@ -3,11 +3,31 @@
 A curated list of Git commands for analyzing repositories, tracking contributions, and debugging.
 
 ## Table of Contents
-- [Commit & Author Insights](#commit--author-insights)
-- [File & Code History](#file--code-history)
-- [Timeline & Project Overview](#timeline--project-overview)
-- [Cleanup & Debugging](#cleanup--debugging)
-- [Stats & Reports](#stats--reports)
+
+### [Commit & Author Insights](#-commit--author-insights)
+- [1. Show commits by a specific contributor](#1-show-commits-by-a-specific-contributor)
+- [2. Store commit history to a file](#2-store-commit-history-to-a-file)
+- [3. Count commits per contributor](#3-count-commits-per-contributor)
+- [4. Show files changed by a contributor](#4-show-files-changed-by-a-contributor)
+
+### [File & Code History](#-file--code-history)
+- [5. See who changed what and when (Blame)](#5-see-who-changed-what-and-when-blame)
+- [6. Show a file's history](#6-show-a-files-history)
+- [7. Find commits that changed specific lines](#7-find-commits-that-changed-specific-lines)
+- [8. Show the difference for a file between two commits](#8-show-the-difference-for-a-file-between-two-commits)
+
+### [Timeline & Project Overview](#-timeline--project-overview)
+- [9. View commit history as a graph](#9-view-commit-history-as-a-graph)
+- [10. See commits within a date range](#10-see-commits-within-a-date-range)
+
+### [Cleanup & Debugging](#-cleanup--debugging)
+- [11. Preview untracked files before deleting](#11-preview-untracked-files-before-deleting)
+- [12. Delete untracked files](#12-delete-untracked-files)
+- [13. Find deleted files in commit history](#13-find-deleted-files-in-commit-history)
+
+### [Stats & Reports](#-stats--reports)
+- [14. Show commit count per day](#14-show-commit-count-per-day)
+- [15. Show diff stats for a contributor](#15-show-diff-stats-for-a-contributor)
 
 ---
 
