@@ -133,7 +133,22 @@ resource "docker_container" "mysql_container" { # creates a container named mysq
 }
 ```
 
+### Then execute this commands one by one
+```bash
 
+# 01 ******  Initialize Terraform  ******
+docker run --rm -it -v ${PWD}:/data -w /data hashicorp/terraform:light init
+
+# 02 ******  Plan execution  ******
+docker run --rm -it -v ${PWD}:/data -v /var/run/docker.sock:/var/run/docker.sock -v /var/lib/docker:/var/lib/docker -w /data hashicorp/terraform:light plan
+
+# 03 ******  Apply execution  ******
+docker run --rm -it -v ${PWD}:/data -v /var/run/docker.sock:/var/run/docker.sock -v /var/lib/docker:/var/lib/docker -w /data hashicorp/terraform:light apply
+
+```
+
+<br>
+<br>
 <br>
 <br>
 <br>
@@ -155,7 +170,7 @@ terraform { # tells terraform what providers (plugins) are required for this pro
 
 provider "docker" {} # tells terraform we are using docker as our platform
 
-# Pull MySQL Image
+# Pull nginx Image
 resource "docker_image" "nginx_image" { # downloads the nginx docker image from docker hub
   name = "nginx:latest"
 }
@@ -166,9 +181,22 @@ resource "docker_container" "nginx_container" { # creates a container named ngin
   image = docker_image.nginx_image.name # run a container from the image I just downloaded
   ports {
     internal = 80 # inside container
-    external = 8080 # on machine
+    external = 8080 # on machine; change port if not availavle
   }
 }
+```
 
+
+### Then execute this commands one by one
+```bash
+
+# 01 ******  Initialize Terraform  ******
+docker run --rm -it -v ${PWD}:/data -w /data hashicorp/terraform:light init
+
+# 02 ******  Plan execution  ******
+docker run --rm -it -v ${PWD}:/data -v /var/run/docker.sock:/var/run/docker.sock -v /var/lib/docker:/var/lib/docker -w /data hashicorp/terraform:light plan
+
+# 03 ******  Apply execution  ******
+docker run --rm -it -v ${PWD}:/data -v /var/run/docker.sock:/var/run/docker.sock -v /var/lib/docker:/var/lib/docker -w /data hashicorp/terraform:light apply
 
 ```
